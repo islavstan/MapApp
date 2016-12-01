@@ -24,7 +24,9 @@ import java.util.List;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-
+    Button mapType;
+    Button plus;
+    Button minus;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,13 +36,78 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         Button search =(Button)findViewById(R.id.button);
+        mapType =(Button)findViewById(R.id.button2);
+        plus =(Button)findViewById(R.id.plus);
+         search =(Button)findViewById(R.id.button);
+        minus =(Button)findViewById(R.id.minus);
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onSearch();
             }
         });
+
+        mapType.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeType();
+            }
+        });
+
+        plus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                plusZoom();
+            }
+        });
+
+        minus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                minusZoom();
+            }
+        });
+
     }
+
+
+
+
+
+
+
+
+
+    public void plusZoom(){
+mMap.animateCamera(CameraUpdateFactory.zoomIn());
+    }
+
+    public void minusZoom(){
+        mMap.animateCamera(CameraUpdateFactory.zoomOut());
+    }
+
+
+
+
+
+
+
+
+
+
+    public void changeType(){
+        if(mMap.getMapType()==GoogleMap.MAP_TYPE_NORMAL){
+            mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+        }else{
+            mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        }
+
+    }
+
+
+
+
+
 
     public void onSearch(){
         EditText location_tf =(EditText)findViewById(R.id.editText);

@@ -15,11 +15,45 @@
         android:id="@+id/button"
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
-        android:layout_alignParentRight="true"
+       android:layout_toLeftOf="@+id/button2"
         android:text="поиск"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button2"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentRight="true"
+        android:text="map type"/>
+
+    <RelativeLayout
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        android:id="@+id/zoom_block"
+        android:layout_alignParentRight="true">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+         android:layout_centerVertical="true"
+            android:layout_height="wrap_content">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/plus"
+            android:text="+"/>
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/minus"
+                android:layout_below="@+id/plus"
+                android:text="-"/>
+        </RelativeLayout>
+    </RelativeLayout>
 <fragment xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/map"
+    android:layout_toLeftOf="@+id/zoom_block"
     android:layout_below="@+id/editText"
     android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
